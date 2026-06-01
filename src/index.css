@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #faf8f4; color: #2c2318; overflow-x: hidden; }
+  ::selection { background: rgba(181,96,58,0.18); }
+  * { cursor: none !important; }
+}
+
+@layer components {
+  .btn-primary { @apply bg-terracotta text-white px-7 py-3 text-sm font-medium tracking-wide hover:bg-rust transition-all duration-300 rounded-sm inline-block; }
+  .btn-ghost   { @apply bg-transparent border border-warm/50 text-ink px-7 py-3 text-sm font-medium tracking-wide hover:border-terracotta hover:text-terracotta transition-all duration-300 rounded-sm inline-block; }
+  .section-label { @apply text-terracotta text-xs tracking-widest uppercase mb-2 font-medium; }
+  .section-title  { @apply font-serif text-4xl md:text-5xl text-ink mb-1 leading-tight; }
+  .section-rule   { @apply w-12 h-px mb-10; background: #d4b896; }
+  .card { @apply bg-white border border-black/[0.07] transition-all duration-300 hover:border-black/20; }
+  .stack-pill { @apply bg-bg2 border border-black/[0.07] text-muted text-xs px-2.5 py-1 rounded-sm; }
+}
+
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+#cursor      { position:fixed;width:10px;height:10px;border-radius:50%;background:#b5603a;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.15s,width 0.3s,height 0.3s,background 0.3s;mix-blend-mode:multiply; }
+#cursor-ring { position:fixed;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(181,96,58,0.35);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.18s ease-out; }
+body.cursor-hover #cursor      { width:18px;height:18px;background:rgba(181,96,58,0.25); }
+body.cursor-hover #cursor-ring { width:60px;height:60px;border-color:rgba(181,96,58,0.5); }
+
+.marquee-track { display:flex;width:max-content;animation:marquee 28s linear infinite; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+.bubble { position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1);user-select:none;cursor:pointer!important; }
+.bubble:hover { transform:scale(1.14)!important;z-index:10; }
+
+.reveal       { opacity:0;transform:translateY(30px);transition:opacity 0.75s ease,transform 0.75s ease; }
+.reveal.in    { opacity:1;transform:translateY(0); }
+.reveal-l     { opacity:0;transform:translateX(-30px);transition:opacity 0.75s ease,transform 0.75s ease; }
+.reveal-l.in  { opacity:1;transform:translateX(0); }
+.reveal-r     { opacity:0;transform:translateX(30px);transition:opacity 0.75s ease,transform 0.75s ease; }
+.reveal-r.in  { opacity:1;transform:translateX(0); }
+
+.stagger>*:nth-child(1){transition-delay:.06s}
+.stagger>*:nth-child(2){transition-delay:.13s}
+.stagger>*:nth-child(3){transition-delay:.20s}
+.stagger>*:nth-child(4){transition-delay:.27s}
+.stagger>*:nth-child(5){transition-delay:.34s}
+.stagger>*:nth-child(6){transition-delay:.41s}
+
+.hero-clip { background:linear-gradient(130deg,#b5603a,#c8824f 45%,#9e4a2e); -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+
+.project-glow { position:relative;overflow:hidden; }
+.project-glow::after { content:'';position:absolute;inset:0;opacity:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(181,96,58,0.07),transparent 60%);transition:opacity 0.4s;pointer-events:none; }
+.project-glow:hover::after { opacity:1; }
+
+#timeline-chart    { width:100%;height:480px; }
+#deployment-chart  { width:100%;height:340px; }
+
+.poem-ln { opacity:0;transform:translateY(8px);transition:opacity 0.5s ease,transform 0.5s ease; }
+.poem-ln.show { opacity:1;transform:translateY(0); }
+
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-thumb { background:rgba(181,96,58,0.28);border-radius:2px; }
+
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.float-anim { animation:floatY 6s ease-in-out infinite; }
+
+.tag-sage { border-color:rgba(107,140,114,0.4);color:#3a6044; }
+.tag-clay { border-color:rgba(200,130,79,0.4);color:#7a4a18; }
+.tag-default { border-color:rgba(100,80,50,0.15);color:#8c7a62; }
