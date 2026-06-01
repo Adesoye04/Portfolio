@@ -5,11 +5,11 @@ const words = ['Software Engineer','Researcher','Builder','Team Lead','Community
 
 // Currently building ticker items
 const building = [
-  '🔨 Course Advisor App',
-  '🌐 adesoye.dev',
-  '🤖 Blossom HRI Research',
-  '📊 Teaching Analytics Platform',
-  '🗺️ UNBC Campus Pathfinder',
+  'Course Advisor App',
+  'adesoye.dev',
+  'Blossom HRI Research',
+  'Teaching Analytics Platform',
+  'UNBC Campus Pathfinder',
 ]
 
 export default function Hero() {
