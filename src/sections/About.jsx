@@ -15,20 +15,19 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start mb-16">
           <div className="reveal-l space-y-4 text-muted text-sm leading-relaxed">
             <p>
-              I'm a second-year Computer Science student at the University of Northern British Columbia,
-              expected to graduate in May 2028. I write clean, purposeful code — and care just as much
-              about <em className="font-serif italic text-ink not-italic">who</em> it's for as how it's built.
+              Second-year CS student at UNBC, graduating May 2028. I focus on backend engineering and applied AI —
+              REST APIs, database design, RAG pipelines, auth systems. I like problems with real constraints and
+              care about correctness over cleverness.
             </p>
             <p>
-              Currently I'm Team Lead on the Teaching Experience Analytics Platform at UNBC's CTLT,
-              and a Robotics Research Volunteer at the Human-Robot Interaction Lab — where I co-authored
-              an extended abstract accepted at <span className="text-terracotta font-medium">ACM IDC 2026</span> in
-              Brighton as a finalist in the R&D Challenge.
+              Currently Team Lead on the Teaching Experience Analytics Platform at CTLT — FastAPI backend,
+              PostgreSQL, deployed on Railway. Also a volunteer at the HRI Lab building on the Blossom
+              robot platform, which led to a co-first-authored paper accepted at{' '}
+              <span className="text-terracotta font-medium">ACM IDC 2026</span>.
             </p>
             <p>
-              Before UNBC I interned as a Data Engineer at Muzedata (Virginia) and a Product Manager at
-              Wakanow (Lagos). I've also founded two community initiatives — Techvantage and Stop the Spread —
-              that together reached hundreds of people.
+              Previously: Data Engineer at Muzedata (Python ETL pipelines, crypto market data),
+              Product Manager at Wakanow (Lagos). GPA 4.14/4.33, Dean's List.
             </p>
           </div>
 

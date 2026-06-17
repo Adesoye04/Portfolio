@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="border-t border-black/[0.06] px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted">
       <div className="font-serif text-terracotta text-base">Adesoye Oyeyiola</div>
       <div className="text-center">
-        Prince George, BC · UNBC Class of 2028<br/>
+        UNBC Class of 2028<br/>
         <span className="text-muted2">Built with React, Tailwind, Framer Motion & amCharts</span>
       </div>
       <div className="flex gap-6">

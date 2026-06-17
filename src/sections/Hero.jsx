@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
-const words = ['Software Engineer','Researcher','Builder','Team Lead','Community Founder']
+const words = ['Software Engineer','Backend Developer','AI/ML Engineer','HCI Researcher','Systems Programmer']
 
 // Currently building ticker items
 const building = [
@@ -55,7 +55,7 @@ export default function Hero() {
 
           <motion.p variants={item} className="section-label mb-6 flex items-center gap-3">
             <span className="w-8 h-px bg-terracotta/50" />
-            Prince George, BC · Open to Internships
+            Open to Internships
           </motion.p>
 
           <motion.h1 variants={item} className="font-serif text-[clamp(3rem,8vw,6.5rem)] leading-[0.95] mb-6 text-ink">
@@ -71,8 +71,8 @@ export default function Hero() {
           </motion.div>
 
           <motion.p variants={item} className="text-muted text-base md:text-lg leading-relaxed max-w-[500px] mb-8">
-            I build purposeful software, conduct HCI research, and believe the most powerful
-            code is the kind that reaches people. CS at UNBC · ACM IDC 2026 Finalist.
+            CS at UNBC. I work on backend systems, RAG pipelines, and HCI research.
+            Currently shipping production software while finishing my degree. ACM IDC 2026 Finalist.
           </motion.p>
 
           <motion.blockquote variants={item} className="border-l-2 border-warm/60 pl-5 mb-10 max-w-sm">
@@ -85,7 +85,7 @@ export default function Hero() {
           <motion.div variants={item} className="flex flex-wrap gap-4">
             <a href="#projects" className="btn-primary">View My Work</a>
             <a href="#contact"  className="btn-ghost">Get in Touch</a>
-            <a href="/Adesoye Oyeyiola's resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost flex items-center gap-2">
+            <a href="/Adesoye's Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost flex items-center gap-2">
               <span>Resume</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
             </a>

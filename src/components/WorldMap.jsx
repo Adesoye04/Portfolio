@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 const locations = [
   { id: 'nigeria',       title: 'Lagos, Nigeria',         lat:  6.5244, lon:  3.3792, color: '#c8824f', desc: 'Founded Techvantage · Stop the Spread · Wakanow PM Intern' },
   { id: 'virginia',      title: 'Virginia, USA',           lat: 37.4316, lon: -78.6569, color: '#9e4a2e', desc: 'Data Engineer Intern @ Muzedata' },
-  { id: 'prince-george', title: 'Prince George, BC',       lat: 53.9171, lon:-122.7497, color: '#b5603a', desc: 'UNBC · CTLT Research Lead · HRI Lab · Home base' },
+  { id: 'prince-george', title: 'Prince George, BC',         lat: 53.9171, lon:-122.7497, color: '#b5603a', desc: 'UNBC · CTLT Research Lead · HRI Lab' },
   { id: 'brighton',      title: 'Brighton, UK',            lat: 50.8225, lon: -0.1372,  color: '#6b8c72', desc: 'ACM IDC 2026 · R&D Challenge Finalist · Presenting June 2026' },
 ]
 

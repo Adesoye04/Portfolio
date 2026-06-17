@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
 import { skills } from '../data'
 
 const catColors = {
@@ -9,36 +8,126 @@ const catColors = {
   infra:     { bg: 'rgba(100,100,140,0.08)', border: 'rgba(100,100,140,0.25)', text: '#3a3a6a', label: 'Infra & Tools' },
 }
 
+const H = 520
+
 export default function Skills() {
   const containerRef = useRef(null)
-  const [tooltip, setTooltip]   = useState(null)
-  const [placed, setPlaced]     = useState([])
+  const [tooltip, setTooltip] = useState(null)
+  const hoveredRef = useRef(null)
+
+  // Each bubble gets a DOM ref and physics state stored in a ref (not state) to avoid re-renders
+  const bubblesRef = useRef(null)  // array of { el, x, y, vx, vy, r, skill }
+  const rafRef = useRef(null)
+
+  const sorted = [...skills].sort((a, b) => b.size - a.size)
+
+  // One stable ref per bubble element
+  const elRefs = useRef(sorted.map(() => ({ current: null })))
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
     const W = container.offsetWidth
-    const H = 520
-    const positions = []
-    const sorted = [...skills].sort((a, b) => b.size - a.size)
-    const result = sorted.map(skill => {
+
+    // Initialise bubbles tightly around center
+    const cx = W / 2
+    const cy = H / 2
+    const nodes = sorted.map((skill, i) => {
       const r = skill.size / 2
-      let x, y, tries = 0
-      do {
-        x = r + 16 + Math.random() * (W - 2 * r - 32)
-        y = r + 16 + Math.random() * (H - 2 * r - 32)
-        tries++
-      } while (
-        positions.some(p => {
-          const dx = x - p.x, dy = y - p.y
-          return Math.sqrt(dx*dx + dy*dy) < r + p.r + 10
-        }) && tries < 400
-      )
-      positions.push({ x, y, r })
-      return { ...skill, x, y }
+      const angle = (i / sorted.length) * Math.PI * 2
+      const dist = 20 + i * 8
+      return {
+        skill,
+        r,
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+      }
     })
-    setPlaced(result)
-  }, [])
+    bubblesRef.current = nodes
+
+    // Apply initial positions
+    nodes.forEach((n, i) => {
+      const el = elRefs.current[i]?.current
+      if (el) {
+        el.style.left = (n.x - n.r) + 'px'
+        el.style.top  = (n.y - n.r) + 'px'
+      }
+    })
+
+    const DAMPING     = 0.985
+    const CENTER_PULL = 0.004  // gentle attraction to center
+    const DRIFT       = 0.015  // random nudge each frame
+
+    function tick() {
+      const W2 = container.offsetWidth
+      const nodes = bubblesRef.current
+      if (!nodes) return
+
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i]
+        if (hoveredRef.current === i) continue  // freeze hovered bubble
+
+        // Gentle center attraction
+        a.vx += (W2 / 2 - a.x) * CENTER_PULL
+        a.vy += (H   / 2 - a.y) * CENTER_PULL
+
+        // Tiny random drift for organic feel
+        a.vx += (Math.random() - 0.5) * DRIFT
+        a.vy += (Math.random() - 0.5) * DRIFT
+
+        // Collision with other bubbles
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j]
+          const dx = b.x - a.x
+          const dy = b.y - a.y
+          const dist = Math.sqrt(dx * dx + dy * dy) || 0.01
+          const minDist = a.r + b.r + 2  // 2px gap so they just touch
+          if (dist < minDist) {
+            const overlap = (minDist - dist) / 2
+            const nx = dx / dist
+            const ny = dy / dist
+            a.x -= nx * overlap
+            a.y -= ny * overlap
+            b.x += nx * overlap
+            b.y += ny * overlap
+            // exchange velocity component along collision normal
+            const relV = (a.vx - b.vx) * nx + (a.vy - b.vy) * ny
+            if (relV > 0) {
+              a.vx -= relV * nx * 0.5
+              a.vy -= relV * ny * 0.5
+              b.vx += relV * nx * 0.5
+              b.vy += relV * ny * 0.5
+            }
+          }
+        }
+
+        // Integrate
+        a.vx *= DAMPING
+        a.vy *= DAMPING
+        a.x  += a.vx
+        a.y  += a.vy
+
+        // Wall bounce (keep inside canvas)
+        if (a.x - a.r < 0)    { a.x = a.r;    a.vx = Math.abs(a.vx) }
+        if (a.x + a.r > W2)   { a.x = W2-a.r; a.vx = -Math.abs(a.vx) }
+        if (a.y - a.r < 0)    { a.y = a.r;    a.vy = Math.abs(a.vy) }
+        if (a.y + a.r > H)    { a.y = H-a.r;  a.vy = -Math.abs(a.vy) }
+
+        // Write to DOM directly — no React state
+        const el = elRefs.current[i]?.current
+        if (el) {
+          el.style.left = (a.x - a.r) + 'px'
+          el.style.top  = (a.y - a.r) + 'px'
+        }
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    rafRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [])  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section id="skills" className="py-28 px-8 md:px-16 bg-bg2">
@@ -66,21 +155,37 @@ export default function Skills() {
 
           {/* Desktop bubble canvas */}
           <div className="md:col-span-2 reveal-r">
-            <div ref={containerRef} className="skills-bubble-canvas relative w-full rounded-sm border border-black/[0.07] bg-bg overflow-hidden" style={{ height: 520 }}>
-              {placed.map((skill) => {
+            <div ref={containerRef} className="skills-bubble-canvas relative w-full rounded-sm border border-black/[0.07] bg-bg overflow-hidden" style={{ height: H }}>
+              {sorted.map((skill, i) => {
                 const c = catColors[skill.cat]
                 const r = skill.size / 2
                 const fontSize = skill.size > 70 ? 13 : skill.size > 52 ? 11 : 10
                 return (
-                  <div key={skill.name} className="bubble"
-                    style={{ left: skill.x - r, top: skill.y - r, width: skill.size, height: skill.size, background: c.bg, border: `1px solid ${c.border}` }}
-                    onMouseEnter={() => {
-                      const W = containerRef.current?.offsetWidth || 500
-                      let tx = skill.x + r + 10
-                      if (tx + 240 > W) tx = skill.x - r - 250
-                      setTooltip({ skill, x: Math.max(8, tx), y: Math.max(8, skill.y - 20) })
+                  <div
+                    key={skill.name}
+                    ref={el => { if (!elRefs.current[i]) elRefs.current[i] = { current: null }; elRefs.current[i].current = el }}
+                    className="bubble"
+                    style={{
+                      position: 'absolute',
+                      width: skill.size,
+                      height: skill.size,
+                      background: c.bg,
+                      border: `1px solid ${c.border}`,
+                      transition: 'box-shadow 0.2s',
                     }}
-                    onMouseLeave={() => setTooltip(null)}
+                    onMouseEnter={() => {
+                      hoveredRef.current = i
+                      const node = bubblesRef.current?.[i]
+                      if (!node) return
+                      const W = containerRef.current?.offsetWidth || 500
+                      let tx = node.x + r + 10
+                      if (tx + 240 > W) tx = node.x - r - 250
+                      setTooltip({ skill, x: Math.max(8, tx), y: Math.max(8, node.y - 20) })
+                    }}
+                    onMouseLeave={() => {
+                      hoveredRef.current = null
+                      setTooltip(null)
+                    }}
                   >
                     <span style={{ fontSize, color: c.text, fontWeight: 500, textAlign: 'center', padding: 4, lineHeight: 1.2 }}>{skill.name}</span>
                   </div>
