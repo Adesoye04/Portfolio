@@ -202,7 +202,7 @@ export const initiatives = [
     name: 'Techvantage',
     tag: 'Tech Outreach · Founded',
     color: 'sage',
-    desc: 'Started as one workshop in Lagos and grew into something I didn\'t expect. We built a curriculum from scratch, ran sessions across multiple schools, and watched teenagers go from never touching a laptop to building things. That shift is what got me into this field.',
+    desc: 'It began with one workshop in Lagos and then became something that was beyond my imagination. We put together our own curriculum, conducted workshops in different schools, and witnessed teens progress from having never touched a computer before to doing amazing stuff. It was that transition that led me here.',
     stats: [{ num: '141', label: 'Teens trained' }, { num: '$2.2K', label: 'Raised' }],
     images: { hero: '/images/techvantage-1.jpg', thumbnails: [] },
   },
@@ -221,7 +221,7 @@ export const poems = [
   {
     title: 'Canto LXXXI',
     author: 'Ezra Pound · 1948',
-    note: 'Pound wrote this while imprisoned in a detention camp in Pisa. Stripped of everything, he still wrote about what endures. Creation under constraint — that lives in me.',
+    note: 'That which you love wholeheartedly will always be yours forever because it is the only one that stands the test of time. According to Pound, "error is all in the not done, all in the diffidence that faltered". This implies that the biggest blunder anyone could ever make lies in failing to try due to fear.',
     lines: [
       'What thou lovest well remains,',
       'the rest is dross',
@@ -236,7 +236,7 @@ export const poems = [
   {
     title: 'If—',
     author: 'Rudyard Kipling · 1910',
-    note: 'About the quiet work of becoming. Keeping your head when everything is noise. That balance is something I am still learning.',
+    note: 'The poem "If—" by Rudyard Kipling serves as a classic model of emotional maturity and strength. In relation to the idea of "doing what you love," this involves doing so without allowing yourself to become obsessed with it. Success and failure come and go, and loving something means enduring exhaustion and heartache to preserve one\'s vision.',
     lines: [
       'If you can keep your head when all about you',
       'Are losing theirs and blaming it on you,',
@@ -250,7 +250,7 @@ export const poems = [
   {
     title: 'Invictus',
     author: 'W. E. Henley · 1888',
-    note: 'Written after his leg was amputated. "I am the master of my fate" is not arrogance — it is the decision to keep going when the ground gives way.',
+    note: '"Invictus" by William Ernest Henley is a poem that serves as an expression of tenacity and self-reliance. It is imperative to be the "master of your fate" and "captain of your soul," taking absolute accountability in pursuing one\'s dreams without seeking permission or perfect circumstances.',
     lines: [
       'Out of the night that covers me,',
       'Black as the pit from pole to pole,',
@@ -262,18 +262,11 @@ export const poems = [
     ],
   },
   {
-    title: 'Still I Rise',
-    author: 'Maya Angelou · 1978',
-    note: 'Triumphant. Ancestral. This poem is what it looks like to carry your history without being crushed by it.',
+    title: 'Do Not Go Gentle Into That Good Night',
+    author: 'Dylan Thomas · 1951',
+    note: 'This poem revolves around the idea of different kinds of men—men who are wise, good, wild, and grave. Each one of these different men, although living varied lives, does not choose to give in to the darkness that comes towards the end of his life. "Rage, rage against the dying of the light" acts as an anchor for the emotion here.',
     lines: [
-      'You may write me down in history',
-      'With your bitter, twisted lies,',
-      'You may trod me in the very dirt',
-      'But still, like dust, I\'ll rise.',
-      '',
-      'Just like moons and like suns,',
-      'With the certainty of tides,',
-      'Still I\'ll rise.',
+      'Rage, rage against the dying of the light.',
     ],
   },
 ]

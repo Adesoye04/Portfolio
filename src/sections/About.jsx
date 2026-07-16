@@ -15,14 +15,14 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start mb-16">
           <div className="reveal-l space-y-4 text-muted text-sm leading-relaxed">
             <p>
-              Third-year CS student at UNBC, graduating May 2028. I focus on backend engineering and applied AI —
-              REST APIs, database design, RAG pipelines, auth systems. I like problems with real constraints and
-              care about correctness over cleverness.
+              CS Third-year student at UNBC, graduating May 2028. My areas of expertise are backend development
+              and AI implementation, including RESTful APIs, database design, RAG, and authentication protocols.
+              I prefer realistic problems and favor precision over elegance.
             </p>
             <p>
-              Currently Team Lead on the Teaching Experience Analytics Platform at CTLT — FastAPI backend,
-              PostgreSQL, deployed on Railway. Also a volunteer at the HRI Lab building on the Blossom
-              robot platform, which led to a co-first-authored paper accepted at{' '}
+              Current position is Team Lead for the Teaching Experience Analytics Platform at CTLT – Backend
+              FastAPI, Postgres, hosted on Railway. Currently volunteering at the HRI Lab, working on the
+              Blossom robotics platform. This resulted in my being a co-first author of a paper accepted at{' '}
               <span className="text-terracotta font-medium">ACM IDC 2026</span>.
             </p>
             <p>

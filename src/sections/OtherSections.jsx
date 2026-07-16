@@ -66,9 +66,10 @@ export function Research() {
               <h3 className="font-serif text-2xl text-ink mb-1 leading-snug">Guardians of the Planet</h3>
               <p className="text-xs text-muted2 tracking-wide mb-3">Published in ACM Digital Library</p>
               <p className="text-sm text-muted leading-relaxed mb-5">
-                We built a sustainability education system for children — a Scratch game, an AR layer, and a
-                physical robot (Blossom) that tied it all together as a single character. Real kids, ethics-approved
-                study, and somehow it actually worked. Accepted at ACM IDC 2026 and I'm presenting it in Brighton.
+                We developed a system to educate children about sustainability in the form of a game in Scratch,
+                an augmented reality layer and a robot called Blossom that put all those things together into
+                one character. Real children, ethics-reviewed research, and somehow it all came together. Got
+                accepted to ACM IDC 2026 and we presented there.
               </p>
               <div className="flex flex-wrap gap-3 items-center">
                 <span className="text-xs px-3 py-1.5 border border-sage/30 text-sage rounded-sm bg-sage/5 font-medium">
@@ -107,10 +108,10 @@ export function Research() {
 // ── COMMUNITY ─────────────────────────────────────────────────────
 const initiativeDetails = {
   'Techvantage': {
-    writeup: `I started Techvantage because I grew up in Lagos knowing that tech was something you could do, but nobody around me was teaching it. Nigerian secondary schools mostly don't touch programming or digital skills at all — so we decided to.\n\nWhat started as one workshop turned into a full curriculum. We ran sessions across multiple schools, trained 141 teenagers, and raised $2,200 CAD to cover devices, venue, and printed materials. The best part was watching students go from never opening a laptop to actually building things and getting curious about what else was possible.\n\nIt's also what made me want to study CS seriously.`,
+    writeup: `Techvantage was founded because I grew up in Lagos realizing that tech was an option, but there were no people anywhere teaching it to me. Tech is not covered at all in Nigerian secondary schools — and that was how we thought we could change that.\n\nA small workshop eventually became a complete curriculum for us. We held the workshops in several schools, taught 141 youths and managed to raise $2,200 CAD for devices, venue and printed materials. Most satisfying was seeing kids who had never used a computer before build projects and become interested in other possibilities that tech had to offer.\n\nThat was also how I realized I wanted to study CS.`,
   },
   'Stop the Spread': {
-    writeup: `2020. COVID-19 was spreading fast in Lagos and hand sanitizer had basically disappeared from shelves — or was priced so high that most families couldn't touch it.\n\nWe got access to the University of Lagos Chemistry Department, learned how to produce sanitizer properly, and made over 500 bottles ourselves. The Nigerian Red Cross helped us figure out distribution — schools, community centers, low-income households.\n\nThis was before I knew anything about software or systems design. But looking back, it was the same instinct: you see a problem, you figure out what resources you have, and you move. That lesson has stayed with me.`,
+    writeup: `The coronavirus had spread quickly in Lagos, and hand sanitizers were not available in stores – or available only at such a high price that most people could not afford them.\n\nI managed to get to the Chemistry department of the University of Lagos, learn how to make hand sanitizer, and make more than 500 bottles myself. Nigerian Red Cross helped us work on the logistics of the product's delivery – to schools, community centers, poor neighborhoods.\n\nAt the time, I knew nothing about software design. However, in retrospect, the same principle applied – you see the problem, understand your resources, and go after it.`,
   },
 }
 
@@ -253,16 +254,10 @@ export function Community() {
 // ── POEMS ─────────────────────────────────────────────────────────
 export function Poems() {
   const [active, setActive] = useState(0)
-  const [displayed, setDisplayed] = useState(poems[0])
+  const displayed = poems[active]
   const linesRef = useRef([])
 
-  const switchPoem = (idx) => {
-    if (idx === active) return
-    setActive(idx)
-    setTimeout(() => {
-      setDisplayed(poems[idx])
-    }, 200)
-  }
+  const switchPoem = (idx) => setActive(idx)
 
   useEffect(() => {
     const lines = document.querySelectorAll('.poem-ln')

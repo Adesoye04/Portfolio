@@ -71,8 +71,9 @@ export default function Hero() {
           </motion.div>
 
           <motion.p variants={item} className="text-muted text-base md:text-lg leading-relaxed max-w-[500px] mb-8">
-            I build backend systems and AI-powered applications — RAG pipelines, vector search,
-            REST APIs at scale. I also research HCI in social robotics and child-centered design.
+            I develop backend infrastructure and AI-driven applications such as Retrieval-Augmented
+            Generation pipelines, vector search, and RESTful APIs. Additionally, I conduct HCI research
+            on social robotics and child-oriented design.
           </motion.p>
 
           <motion.blockquote variants={item} className="border-l-2 border-warm/60 pl-5 mb-10 max-w-sm">
