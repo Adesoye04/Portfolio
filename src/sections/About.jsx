@@ -15,7 +15,7 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start mb-16">
           <div className="reveal-l space-y-4 text-muted text-sm leading-relaxed">
             <p>
-              Second-year CS student at UNBC, graduating May 2028. I focus on backend engineering and applied AI —
+              Third-year CS student at UNBC, graduating May 2028. I focus on backend engineering and applied AI —
               REST APIs, database design, RAG pipelines, auth systems. I like problems with real constraints and
               care about correctness over cleverness.
             </p>
@@ -35,7 +35,7 @@ export default function About() {
             {[
               ['4.14', 'GPA / 4.33'],
               ['Dean\'s List', 'Winter 2026'],
-              ['IDC 2026', 'R&D Finalist'],
+              ['IDC 2026', 'R&D Finalist · 2nd'],
               ['141', 'Teens Trained'],
               ['500+', 'Bottles Distributed'],
               ['1550', 'SAT Score'],

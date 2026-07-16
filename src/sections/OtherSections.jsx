@@ -22,9 +22,10 @@ export function Research() {
             <div className="hidden md:block w-px h-20 bg-warm/40 self-center" />
             <div>
               <p className="text-xs text-sage tracking-widest uppercase mb-3 font-medium">
-                Interaction Design and Children · Brighton, UK · R&D Challenge Finalist
+                R&D Challenge Finalist (2nd Place) · ACM IDC 2026 · Brighton, UK
               </p>
-              <h3 className="font-serif text-2xl text-ink mb-3 leading-snug">Guardians of the Planet</h3>
+              <h3 className="font-serif text-2xl text-ink mb-1 leading-snug">Guardians of the Planet</h3>
+              <p className="text-xs text-muted2 tracking-wide mb-3">Published in ACM Digital Library</p>
               <p className="text-sm text-muted leading-relaxed mb-5">
                 We built a sustainability education system for children — a Scratch game, an AR layer, and a
                 physical robot (Blossom) that tied it all together as a single character. Real kids, ethics-approved
@@ -50,20 +51,18 @@ export function Research() {
 // ── COMMUNITY ─────────────────────────────────────────────────────
 const initiativeDetails = {
   'Techvantage': {
-    images: ['/images/techvantage-1.jpg'],
     writeup: `I started Techvantage because I grew up in Lagos knowing that tech was something you could do, but nobody around me was teaching it. Nigerian secondary schools mostly don't touch programming or digital skills at all — so we decided to.\n\nWhat started as one workshop turned into a full curriculum. We ran sessions across multiple schools, trained 141 teenagers, and raised $2,200 CAD to cover devices, venue, and printed materials. The best part was watching students go from never opening a laptop to actually building things and getting curious about what else was possible.\n\nIt's also what made me want to study CS seriously.`,
   },
   'Stop the Spread': {
-    images: ['/images/spread-1.jpg', '/images/spread-2.jpg', '/images/spread-3.jpg', '/images/spread-4.jpg'],
     writeup: `2020. COVID-19 was spreading fast in Lagos and hand sanitizer had basically disappeared from shelves — or was priced so high that most families couldn't touch it.\n\nWe got access to the University of Lagos Chemistry Department, learned how to produce sanitizer properly, and made over 500 bottles ourselves. The Nigerian Red Cross helped us figure out distribution — schools, community centers, low-income households.\n\nThis was before I knew anything about software or systems design. But looking back, it was the same instinct: you see a problem, you figure out what resources you have, and you move. That lesson has stayed with me.`,
   },
 }
 
 function InitiativeModal({ item, onClose }) {
   const details = initiativeDetails[item.name]
-  const images = details?.images ?? []
+  const hero = item.images?.hero ?? null
+  const thumbnails = item.images?.thumbnails ?? []
   const writeup = details?.writeup ?? item.desc
-  const [imgIdx, setImgIdx] = useState(0)
 
   return (
     <motion.div
@@ -82,25 +81,20 @@ function InitiativeModal({ item, onClose }) {
         className="bg-white rounded-sm border border-black/10 shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
         onClick={e => e.stopPropagation()}
       >
-        {images.length > 0 && (
-          <div className="relative w-full bg-bg3 overflow-hidden" style={{ height: 280 }}>
-            <img src={images[imgIdx]} alt={`${item.name} ${imgIdx + 1}`} className="w-full h-full object-cover" />
-            {images.length > 1 && (
-              <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-                {images.map((_, i) => (
-                  <button key={i} onClick={() => setImgIdx(i)}
-                    className={`w-2 h-2 rounded-full transition-colors ${i === imgIdx ? 'bg-terracotta' : 'bg-white/60'}`} />
-                ))}
+        <div className="relative w-full bg-bg3 overflow-hidden flex items-center justify-center" style={{ height: 280 }}>
+          {hero ? (
+            <img src={hero} alt={`${item.name} preview`} className="w-full h-full object-cover" />
+          ) : (
+            <span className="font-serif text-2xl text-muted/40 px-6 text-center">{item.name}</span>
+          )}
+        </div>
+        {thumbnails.length > 0 && (
+          <div className="flex gap-2 p-2 bg-bg2">
+            {thumbnails.slice(0, 2).map((src, i) => (
+              <div key={i} className="flex-1 rounded-sm overflow-hidden bg-bg3" style={{ height: 120 }}>
+                <img src={src} alt={`${item.name} detail ${i + 1}`} className="w-full h-full object-cover" />
               </div>
-            )}
-            {images.length > 1 && (
-              <>
-                <button onClick={() => setImgIdx(i => (i - 1 + images.length) % images.length)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-sm bg-white/80 flex items-center justify-center text-ink hover:bg-white transition-colors">‹</button>
-                <button onClick={() => setImgIdx(i => (i + 1) % images.length)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-sm bg-white/80 flex items-center justify-center text-ink hover:bg-white transition-colors">›</button>
-              </>
-            )}
+            ))}
           </div>
         )}
         <div className="p-7">

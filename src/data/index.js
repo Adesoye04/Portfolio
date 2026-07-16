@@ -3,17 +3,18 @@ export const projects = [
   {
     id: 1,
     name: 'U-Course Advisor',
-    tag: 'AI · Full-Stack · Private Repo',
-    tagStyle: 'tag-clay',
-    desc: 'Full-stack course advising platform for UNBC. Prerequisite engine handles AND/OR dependency trees with minimum grade enforcement across 400+ courses. RAG chat advisor using Claude routes between pgvector semantic search (Voyage AI embeddings) and a degree-progress recommendation engine, with a three-layer guardrail stack. Auth0 JWT, async SQLAlchemy, Celery, Sentry, Railway.',
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Claude', 'Auth0', 'Celery'],
+    tag: 'AI · Full-Stack',
+    tagStyle: 'tag-sage',
+    desc: 'Full-stack AI-powered course advising platform live in production with active UNBC students. Built a prerequisite/preclusion validation engine supporting AND/OR dependency trees and minimum grade enforcement across 400+ courses spanning 16 departments and two degree programs. Built a RAG-powered AI chat advisor using Claude with multi-layer guardrails, routing between hybrid vector/full-text semantic search (Voyage AI embeddings via pgvector) and a degree-progress-aware recommendation engine. Course scoring algorithm ranks eligible courses by requirement urgency, prerequisite-unlocking value, and credit weight. Secured with Auth0 JWT, async SQLAlchemy, Celery + Redis background tasks, and Sentry monitoring; deployed on Railway/Vercel with separated production/dev environments.',
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Claude', 'Auth0', 'Celery', 'Redis', 'Voyage AI', 'Vercel'],
     featured: true,
     status: 'live',
     github: null,
     privateRepo: true,
     live: null,
     year: '2026',
-    role: 'Worked with a Team',
+    role: 'Backend & Infrastructure Lead',
+    images: { hero: null, thumbnails: [] },
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ export const projects = [
     live: null,
     year: '2025–26',
     role: 'Team Lead · Backend & Integration',
+    images: { hero: null, thumbnails: [] },
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ export const projects = [
     live: null,
     year: '2025',
     role: 'AI Engine Developer',
+    images: { hero: null, thumbnails: [] },
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ export const projects = [
     live: null,
     year: '2025',
     role: 'Solo',
+    images: { hero: null, thumbnails: [] },
   },
   {
     id: 5,
@@ -70,6 +74,7 @@ export const projects = [
     live: null,
     year: '2026',
     role: 'Solo',
+    images: { hero: null, thumbnails: [] },
   },
   {
     id: 6,
@@ -84,6 +89,7 @@ export const projects = [
     live: '#',
     year: '2026',
     role: 'Solo',
+    images: { hero: null, thumbnails: [] },
   },
 ]
 
@@ -185,7 +191,7 @@ export const timeline = [
     bullets: [
       'Contributing to Blossom open-source social robot',
       'Wrote calibration algorithms for servo motors',
-      'Co-authored IDC 2026 paper — R&D Challenge Finalist, Brighton UK',
+      'Co-authored ACM IDC 2026 paper — R&D Challenge Finalist (2nd Place), Brighton UK',
     ],
   },
 ]
@@ -198,6 +204,7 @@ export const initiatives = [
     color: 'sage',
     desc: 'Started as one workshop in Lagos and grew into something I didn\'t expect. We built a curriculum from scratch, ran sessions across multiple schools, and watched teenagers go from never touching a laptop to building things. That shift is what got me into this field.',
     stats: [{ num: '141', label: 'Teens trained' }, { num: '$2.2K', label: 'Raised' }],
+    images: { hero: '/images/techvantage-1.jpg', thumbnails: [] },
   },
   {
     name: 'Stop the Spread',
@@ -205,6 +212,7 @@ export const initiatives = [
     color: 'clay',
     desc: 'COVID-19, 2020. Sanitizer was scarce and most people couldn\'t afford what was available. We partnered with the University of Lagos Chemistry Department to make it ourselves, and the Nigerian Red Cross to get it out. 500+ bottles distributed — schools, households, community centers.',
     stats: [{ num: '500+', label: 'Bottles distributed' }, { num: '3', label: 'Partner orgs' }],
+    images: { hero: '/images/stop-the-spread-hero.jpg', thumbnails: [] },
   },
 ]
 

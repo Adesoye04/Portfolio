@@ -71,8 +71,8 @@ export default function Hero() {
           </motion.div>
 
           <motion.p variants={item} className="text-muted text-base md:text-lg leading-relaxed max-w-[500px] mb-8">
-            CS at UNBC. I work on backend systems, RAG pipelines, and HCI research.
-            Currently shipping production software while finishing my degree. ACM IDC 2026 Finalist.
+            I build backend systems and AI-powered applications — RAG pipelines, vector search,
+            REST APIs at scale. I also research HCI in social robotics and child-centered design.
           </motion.p>
 
           <motion.blockquote variants={item} className="border-l-2 border-warm/60 pl-5 mb-10 max-w-sm">
@@ -128,7 +128,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: 0.7 }}
         className="absolute bottom-16 right-8 md:right-16 hidden md:flex gap-8"
       >
-        {[['4.14','GPA / 4.33'],['2026',"Dean's List"],['IDC','R&D Finalist'],['141','Teens Trained']].map(([n,l]) => (
+        {[['4.14','GPA / 4.33'],['2026',"Dean's List"],['IDC','R&D Finalist · 2nd'],['141','Teens Trained']].map(([n,l]) => (
           <div key={l} className="text-right">
             <div className="font-serif text-2xl text-terracotta">{n}</div>
             <div className="text-xs text-muted uppercase tracking-wide">{l}</div>
