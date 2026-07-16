@@ -3,7 +3,46 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { initiatives, poems } from '../data'
 
 // ── RESEARCH ──────────────────────────────────────────────────────
+const researchPhotos = [
+  { src: '/images/idc-2026-team.jpg', alt: 'Adesoye and the Guardians of the Planet team receiving the R&D Challenge 2nd Place award at ACM IDC 2026, Brighton UK' },
+  { src: '/images/idc-2026-certificate.jpg', alt: 'ACM IDC 2026 Research & Design Challenge 2nd Place Award certificate' },
+]
+
+function ResearchLightbox({ photo, onClose }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+      style={{ background: 'rgba(30,20,12,0.75)', backdropFilter: 'blur(4px)' }}
+      onClick={onClose}
+    >
+      <motion.img
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.96 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+        src={photo.src}
+        alt={photo.alt}
+        className="max-w-full max-h-[88vh] rounded-sm shadow-2xl object-contain"
+        onClick={e => e.stopPropagation()}
+      />
+      <button
+        onClick={onClose}
+        className="absolute top-5 right-5 w-9 h-9 rounded-sm border border-white/30 flex items-center justify-center text-white/80 hover:text-white hover:border-white/60 transition-colors"
+      >
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+          <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        </svg>
+      </button>
+    </motion.div>
+  )
+}
+
 export function Research() {
+  const [activePhoto, setActivePhoto] = useState(null)
+
   return (
     <section id="research" className="py-28 px-8 md:px-16 bg-bg2">
       <div className="max-w-6xl mx-auto">
@@ -41,9 +80,26 @@ export function Research() {
               </div>
             </div>
           </div>
+
+          <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-black/[0.06]">
+            {researchPhotos.map(photo => (
+              <button
+                key={photo.src}
+                onClick={() => setActivePhoto(photo)}
+                className="relative rounded-sm overflow-hidden border border-black/[0.07] hover:border-black/20 transition-all duration-300 group"
+                style={{ height: 200 }}
+              >
+                <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </button>
+            ))}
+          </div>
         </div>
 
       </div>
+
+      <AnimatePresence>
+        {activePhoto && <ResearchLightbox photo={activePhoto} onClose={() => setActivePhoto(null)} />}
+      </AnimatePresence>
     </section>
   )
 }
