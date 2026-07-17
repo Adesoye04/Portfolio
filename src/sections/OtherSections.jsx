@@ -288,30 +288,27 @@ export function Poems() {
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
-          >
-            <div className="font-serif italic text-muted text-lg leading-[2.2]">
-              {displayed.lines.map((line, i) =>
-                line === '' ? <span key={i} className="poem-ln block h-5" /> :
-                <span key={i} className="poem-ln block">{line}</span>
-              )}
-            </div>
-            <div>
-              <h3 className="font-serif text-2xl text-ink mb-1">{displayed.title}</h3>
-              <p className="text-xs text-muted tracking-widest uppercase mb-6">{displayed.author}</p>
-              <p className="text-sm text-muted leading-relaxed border-l-2 border-warm/60 pl-5">
-                {displayed.note}
-              </p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
+        >
+          <div className="font-serif italic text-muted text-lg leading-[2.2]">
+            {displayed.lines.map((line, i) =>
+              line === '' ? <span key={i} className="poem-ln block h-5" /> :
+              <span key={i} className="poem-ln block">{line}</span>
+            )}
+          </div>
+          <div>
+            <h3 className="font-serif text-2xl text-ink mb-1">{displayed.title}</h3>
+            <p className="text-xs text-muted tracking-widest uppercase mb-6">{displayed.author}</p>
+            <p className="text-sm text-muted leading-relaxed border-l-2 border-warm/60 pl-5">
+              {displayed.note}
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
