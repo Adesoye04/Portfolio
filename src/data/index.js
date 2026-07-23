@@ -33,6 +33,22 @@ export const projects = [
   },
   {
     id: 3,
+    name: 'Misty Maze',
+    tag: 'Robotics · Summer Camp',
+    tagStyle: 'tag-clay',
+    desc: 'RFID card-sequencing game for the Misty II robot, played by pairs of kids on a physical maze board. Players tap Forward/Left/Right cards onto 6 SPI-wired RFID readers to program a route; a background watcher gives live per-card feedback the moment a wrong card goes down, and Misty drives the validated sequence herself once the full move set checks out. Player check-in runs OpenCV motion detection plus ArUco marker recognition off Misty\'s own camera to identify each child from their ID card and pull up their profile, with USB-webcam and manual keyboard fallbacks. Mission hints, success lines, and retry nudges are generated live by a local LLM (Ollama), pre-fetched in the background so there\'s no in-game delay, falling back to hardcoded lines if the model is unreachable. Every session logs to JSON, Excel, and CSV with per-attempt accuracy, and is recorded to video (consent-gated per player). One of 5 games built for a UNBC robotics summer camp reaching 125 students.',
+    stack: ['Python', 'Misty II API', 'RFID/SPI', 'OpenCV', 'ArUco', 'Raspberry Pi', 'Ollama', 'WebSocket'],
+    featured: false,
+    status: 'complete',
+    github: null,
+    privateRepo: true,
+    live: null,
+    year: '2026',
+    role: 'Robotic Developer',
+    images: { hero: null, thumbnails: [] },
+  },
+  {
+    id: 4,
     name: 'Score Four Minimax AI',
     tag: 'AI · Java',
     tagStyle: 'tag-clay',
@@ -47,7 +63,7 @@ export const projects = [
     images: { hero: null, thumbnails: [] },
   },
   {
-    id: 4,
+    id: 5,
     name: 'Huffman Compression Tool',
     tag: 'Algorithms · CLI',
     tagStyle: 'tag-default',
@@ -62,7 +78,7 @@ export const projects = [
     images: { hero: null, thumbnails: [] },
   },
   {
-    id: 5,
+    id: 6,
     name: 'UNBC Campus Pathfinder',
     tag: 'Visualizer · In Progress',
     tagStyle: 'tag-sage',
@@ -77,7 +93,7 @@ export const projects = [
     images: { hero: null, thumbnails: [] },
   },
   {
-    id: 6,
+    id: 7,
     name: 'Personal Portfolio',
     tag: 'Live · React',
     tagStyle: 'tag-sage',
@@ -212,7 +228,7 @@ export const initiatives = [
     color: 'clay',
     desc: 'COVID-19, 2020. Sanitizer was scarce and most people couldn\'t afford what was available. We partnered with the University of Lagos Chemistry Department to make it ourselves, and the Nigerian Red Cross to get it out. 500+ bottles distributed — schools, households, community centers.',
     stats: [{ num: '500+', label: 'Bottles distributed' }, { num: '3', label: 'Partner orgs' }],
-    images: { hero: '/images/stop-the-spread-hero.jpg', thumbnails: [] },
+    images: { hero: '/images/spread-4.jpg', thumbnails: [] },
   },
 ]
 
